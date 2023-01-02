@@ -13,10 +13,10 @@ function onSubmit(event) {
   const step = Number(inputStep.value);
   const amount = Number(inputAmount.value);
 
-  for (let index = 1; index <= amount; index += 1) {
-    const stepDelay = delay + step;
+  for (let index = 0; index < amount; index += 1) {
+    const stepDelay = delay + step * index;
     console.log(index);
-    createPromise(index, stepDelay)
+    createPromise(index + 1, stepDelay)
       .then(({ position, delay }) => onSuccess(position, delay))
       .catch(({ position, delay }) => onError(position, delay))
   };
@@ -37,11 +37,11 @@ function createPromise(position, delay) {
 }
 
 function onSuccess(position, delay) {
-  alert(`✅ Fulfilled promise ${position} in ${delay}ms`);
+  console.log (`✅ Fulfilled promise ${position} in ${delay}ms`);
 }
 
 function onError(position, delay) {
-  alert(`❌ Rejected promise ${position} in ${delay}ms`);
+  console.log (`❌ Rejected promise ${position} in ${delay}ms`);
 }
 
   form.addEventListener('submit', onSubmit);

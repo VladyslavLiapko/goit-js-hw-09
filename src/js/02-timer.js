@@ -45,7 +45,7 @@ function convertMs(ms) {
 
 btnStart.addEventListener("click", (event) => {
     btnStart.disabled = true;
-    timerId = setInterval(() => {
+    const timerId = setInterval(() => {
         initialMs = initialMs - onesecond;
         if (initialMs > onesecond) {
             updateCounter(initialMs);
